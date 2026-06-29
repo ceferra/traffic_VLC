@@ -1,37 +1,36 @@
-# traffic_VLC — Intensidad de tráfico por tramos (València)
+# traffic_VLC — Traffic intensity by road segment (València)
 
-Archivo histórico de la **intensidad de tráfico por tramos** de la ciudad de
-València, recogida del portal de datos abiertos municipal (hoy descatalogado).
+Historical archive of **traffic intensity by road segment** for the city of
+València, collected from the municipal open-data portal (now decommissioned).
 
-## Origen
+## Source
 
-- **Fuente:** Ayuntamiento de València — portal *mapas.valencia.es*
+- **Publisher:** València City Council — *mapas.valencia.es* portal
   (`lanzadera/opendata/Tra-intensidad-trafico/JSON`).
-- El servicio dejó de estar disponible; este repositorio es una copia de
-  respaldo del histórico capturado periódicamente.
+- The service is no longer available; this repository is a backup copy of the
+  history captured periodically.
 
-## Periodo
+## Period
 
-- **1637 días** entre **17-12-2014** y **24-10-2024**.
-- Hay un hueco entre 2017 y 2019 (sin recogida en ese intervalo).
+- **1637 days** between **2014-12-17** and **2024-10-24**.
+- There is a gap between 2017 and 2019 (no collection during that interval).
 
-## Estructura del repositorio
+## Repository layout
 
-- Un fichero ZIP por día: `DD-MM-YYYY.zip`.
-- Cada ZIP contiene los JSON capturados ese día (varias lecturas a lo largo
-  de la jornada). El nombre original de cada fichero incluye la marca de
-  tiempo de la captura.
-- Cada commit ("new day") corresponde a un día, fechado con la fecha real
-  del dato.
+- One ZIP file per day: `DD-MM-YYYY.zip`.
+- Each ZIP holds the JSON snapshots captured that day (several readings
+  throughout the day). The original file name embeds the capture timestamp.
+- Each commit ("new day") corresponds to one day, dated with the real date of
+  the data.
 
-## Formato y campos
+## Format and fields
 
-Cada JSON es un **GeoJSON `FeatureCollection`** en proyección **EPSG:25830**
-(UTM huso 30N, ETRS89). Cada *Feature* es un tramo viario (geometría
-`LineString`) con estas propiedades:
+Each JSON is a **GeoJSON `FeatureCollection`** in projection **EPSG:25830**
+(UTM zone 30N, ETRS89). Each *Feature* is a road segment (`LineString`
+geometry) with these properties:
 
-| Campo       | Significado                                                        |
+| Field       | Meaning                                                            |
 |-------------|--------------------------------------------------------------------|
-| `idtramo`   | Identificador del tramo viario.                                    |
-| `lectura`   | Intensidad de tráfico medida en el tramo. `"-1"` = sin dato.       |
-| `des_tramo` | Descripción / denominación del tramo.                              |
+| `idtramo`   | Road-segment identifier.                                           |
+| `lectura`   | Measured traffic intensity on the segment. `"-1"` = no data.       |
+| `des_tramo` | Segment description / name.                                        |
